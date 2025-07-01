@@ -8,6 +8,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
+  // Set base path for production build to match Nginx configuration
+  base: command === 'build' ? '/chat/' : '/',
   server: {
     host: 'localhost',
     port: 3090,
@@ -52,35 +54,35 @@ export default defineConfig(({ command }) => ({
       },
       includeAssets: [],
       manifest: {
-        name: 'LibreChat',
-        short_name: 'LibreChat',
-        start_url: '/',
+        name: 'Chat with AI',
+        short_name: 'Chat with AI',
+        start_url: '/chat/',
         display: 'standalone',
         background_color: '#000000',
         theme_color: '#009688',
         icons: [
           {
-            src: '/assets/favicon-32x32.png',
+            src: '/chat/assets/favicon-WWW.png',
             sizes: '32x32',
             type: 'image/png',
           },
           {
-            src: '/assets/favicon-16x16.png',
+            src: '/chat/assets/favicon-16x16.png',
             sizes: '16x16',
             type: 'image/png',
           },
           {
-            src: '/assets/apple-touch-icon-180x180.png',
+            src: '/chat/assets/logo_dark-www.png',
             sizes: '180x180',
             type: 'image/png',
           },
           {
-            src: '/assets/icon-192x192.png',
+            src: '/chat/assets/logo_light-www.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/assets/maskable-icon.png',
+            src: '/chat/assets/logo_light-www.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable',
