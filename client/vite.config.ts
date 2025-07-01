@@ -9,7 +9,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   // Set base path for production build to match Nginx configuration
-  base: command === 'build' ? '/chat/' : '/',
+  base: '/chat/',
   server: {
     host: 'localhost',
     port: 3090,
@@ -95,7 +95,7 @@ export default defineConfig(({ command }) => ({
       threshold: 10240,
     }),
   ],
-  publicDir: command === 'serve' ? './public' : false,
+  publicDir: './public',
   build: {
     sourcemap: process.env.NODE_ENV === 'development',
     outDir: './dist',
