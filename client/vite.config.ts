@@ -8,8 +8,6 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
-  // Set base path for production build to match Nginx configuration
-  base: '/chat/',
   server: {
     host: 'localhost',
     port: 3090,
@@ -56,33 +54,33 @@ export default defineConfig(({ command }) => ({
       manifest: {
         name: 'Chat with AI',
         short_name: 'Chat with AI',
-        start_url: '/chat/',
+        start_url: '/',
         display: 'standalone',
         background_color: '#000000',
         theme_color: '#009688',
         icons: [
           {
-            src: '/chat/assets/favicon-WWW.png',
+            src: '/assets/favicon-WWW.png',
             sizes: '32x32',
             type: 'image/png',
           },
           {
-            src: '/chat/assets/favicon-16x16.png',
+            src: '/assets/favicon-WWW.png',
             sizes: '16x16',
             type: 'image/png',
           },
           {
-            src: '/chat/assets/logo_dark-www.png',
+            src: '/assets/favicon-WWW.png',
             sizes: '180x180',
             type: 'image/png',
           },
           {
-            src: '/chat/assets/logo_light-www.png',
+            src: '/assets/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/chat/assets/logo_light-www.png',
+            src: '/assets/maskable-icon.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable',
@@ -95,7 +93,7 @@ export default defineConfig(({ command }) => ({
       threshold: 10240,
     }),
   ],
-  publicDir: './public',
+  publicDir: command === 'serve' ? './public' : false,
   build: {
     sourcemap: process.env.NODE_ENV === 'development',
     outDir: './dist',
